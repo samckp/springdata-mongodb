@@ -27,3 +27,9 @@ PUT: http://localhost:8080/jira/app/5e2c7394b26e735089f7fc71
 
 DELETE: 
 http://localhost:8080/jira/app/5e2c7394b26e735089f7fc71
+
+<BR>
+<BR>
+Swagger UI
+<BR>
+http://localhost:8080/swagger-ui.html#/
