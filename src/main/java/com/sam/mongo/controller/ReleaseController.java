@@ -1,9 +1,8 @@
 package com.sam.mongo.controller;
 
 import com.sam.mongo.model.Application;
-import com.sam.mongo.repository.ApplicationRepository;
+import com.sam.mongo.model.Release;
 import com.sam.mongo.repository.ReleaseRepository;
-import com.sam.mongo.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,42 +14,37 @@ import java.util.Optional;
 public class ReleaseController {
 
     @Autowired
-    private ApplicationRepository applicationRepository;
-    @Autowired
     private ReleaseRepository releaseRepository;
-    @Autowired
-    private TicketRepository ticketRepository;
 
-    //..................Application ...........CRUD Operation
-    @GetMapping("/apps")
-    public List<Application> getApplications(){
+    //..................Release ...........CRUD Operation
+    @GetMapping("/release")
+    public List<Release> getReleases(){
 
-        return applicationRepository.findAll();
+        return releaseRepository.findAll();
     }
 
-    @GetMapping("/app/{id}")
-    public Optional<Application> getApplicationById(@PathVariable("id") String id){
+    @GetMapping("/release/{id}")
+    public Optional<Release> getReleaseById(@PathVariable("id") String id){
 
-        return applicationRepository.findById(id);
+        return releaseRepository.findById(id);
     }
 
-    @PostMapping("/add")
-    public Application addApplication(@RequestBody Application application){
+    @PostMapping("/release")
+    public Release addRelease(@RequestBody Release release){
 
-        return applicationRepository.save(application);
+        return releaseRepository.save(release);
     }
 
-    @PutMapping("/app/{id}")
-    public Application updateApplication(@RequestBody Application application, @PathVariable("id") String id) {
+    @PutMapping("/release/{id}")
+    public Release updateRelease(@RequestBody Release release, @PathVariable("id") String id) {
 
-        application.setId(id);
-        return applicationRepository.save(application);
+        release.setId(id);
+        return releaseRepository.save(release);
     }
 
-    @DeleteMapping("/app/{id}")
-    public void deleteApp(@PathVariable("id") String id){
+    @DeleteMapping("/release/{id}")
+    public void deleteRelease(@PathVariable("id") String id){
 
-        applicationRepository.deleteById(id);
+        releaseRepository.deleteById(id);
     }
-
 }
