@@ -1,0 +1,19 @@
+version: '2'
+services:
+  dockerSpringbootPoc:
+    image: shyamusharma/springdata-mongodb-poc:latest
+    container_name: springdata-mongodb-poc
+    depends_on:
+      - mongo
+ #   environment:
+ #     - SPRING_DATASOURCE_URL=jdbc:mysql://productdb:3306/mydb?useUnicode=true&characterEncoding=utf8&useSSL=false
+    ports:
+      - 8080:8080
+
+  mongo:
+    image: mongo
+    container_name: productdb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
